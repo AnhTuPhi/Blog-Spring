@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="/css/style.css">
+<div id="menu-wrapped">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3 col-md-3">
+				<a th:href="@{/}" class="logo">User Managerment</a>
+			</div>
+			<div class="col-lg-9 col-md-9">
+				<div class="menu-control">
+					<a th:href="@{/}">Home</a>
+				</div>
+				<div class="menu-control">
+					<a th:href="@{/register}">Register</a>
+				</div>
+				<div class="menu-control">
+					<a th:href="@{/list}">List User</a>
+				</div>
+				<div class="menu-control">
+					<a th:href="@{/login}">Login</a>
+				</div>
+				<div class="menu-control">
+					<a th:if="${#request.userPrincipal != null}" th:href="@{/logout}">Logout</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
