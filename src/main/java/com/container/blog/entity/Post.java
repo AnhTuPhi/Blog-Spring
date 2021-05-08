@@ -14,6 +14,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -38,11 +41,12 @@ public class Post {
 	@Column(name = "post_category")
 	private String post_category;
 	
-	@Column(name = "author_id")
+	@ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "author_id", referencedColumnName = "user_id")
 	private Long author_id;
-	
+
 	@Column(name = "post_create_time")
-    @CreationTimestamp
+   	@CreationTimestamp
 	private Date post_create_time;
 
 	public Post() {
@@ -89,13 +93,13 @@ public class Post {
 		this.post_category = post_category;
 	}
 
-	public String getAuthor_id() {
+	/*public Long getAuthor_id() {
 		return author_id;
 	}
 
 	public void setAuthor_id(Long author_id) {
 		this.author_id = author_id;
-	}
+	}*/
 
 	public Date getPost_create_time() {
 		return post_create_time;

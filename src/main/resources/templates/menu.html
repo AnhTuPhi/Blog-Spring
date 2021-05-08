@@ -19,6 +19,12 @@
 					<a th:href="@{/login}">Login</a>
 				</div>
 				<div class="menu-control">
+					<a th:href="@{/blog}">Blog</a>
+				</div>
+				<div class="menu-control">
+					<a th:href="@{/post}">Post Blog</a>
+				</div>
+				<div class="menu-control">
 					<a th:if="${#request.userPrincipal != null}" th:href="@{/logout}">Logout</a>
 				</div>
 			</div>

@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
+import com.container.blog.dao.UserPostDAO;
 import com.container.blog.dao.UserRegistrationDAO;
+import com.container.blog.entity.Post;
 import com.container.blog.entity.User;
 
 public interface PostService extends UserDetailsService{

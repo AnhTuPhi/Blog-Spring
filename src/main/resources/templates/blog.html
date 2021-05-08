@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="UTF-8">
+<title>Blog</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<!-- Include menu.html -->
+      <th:block th:include="/menu"></th:block>
+      <div align="center" class="container my-2">
+      		<h1>List User</h1>
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">post_id</th>
+					<th scope="col">post_title</th>
+					<th scope="col">post_content</th>
+					<th scope="col">post_category</th>
+					<th scope="col">author_id</th>
+					<th scope="col">post_create_time</th>
+					<th scope="col">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="post: ${listPost}">
+      						<td th:text="${post.post_id}"></td>
+      						<td th:text="${post.post_title}"></td>
+      						<td th:text="${post.post_content}"></td>
+      						<td th:text="${post.post_category}"></td>
+      						<td th:text="${post.author_id}"></td>
+      						<td th:text="${post.post_create_time}"></td>
+      						<!-- <td>
+      							<a sec:authorize="hasAnyAuthority('ADMIN', 'USER')" th:href="@{/showFormUpdate/{id}(id=${user.id})}">Update</a>
+      							<a sec:authorize="hasAnyAuthority('ADMIN')" th:href="@{/deleteUser/{id}(id=${user.id})}">Delete</a>
+      						</td> -->
+      			</tr>
+			</tbody>
+      		<a th:href="@{/}">Back to previous page</a>
+		</table>
+      </div>
+</body>
+</html>
