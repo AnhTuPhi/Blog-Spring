@@ -1,8 +1,10 @@
 package com.container.blog.entity;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -57,6 +60,11 @@ public class User {
 			inverseJoinColumns = @JoinColumn(name = "role_id")
 			)
 	private Collection<Role> roles;
+	
+	/*@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "author_id", referencedColumnName = "user_id")
+	List<Post> posts = new ArrayList<>();*/
+	
 	
 	public User() {
 			
@@ -137,6 +145,5 @@ public class User {
     public void setRoles(Collection<Role> roles) {
         this.roles = roles;
     }
-	
 	
 }

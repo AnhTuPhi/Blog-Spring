@@ -1,5 +1,6 @@
 package com.container.blog.entity;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -41,24 +42,36 @@ public class Post {
 	@Column(name = "post_category")
 	private String post_category;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "author_id", referencedColumnName = "user_id")
+	/*@Column(name = "author_id")
 	private Long author_id;
+*/	
+	/*@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "author_id")
+	private User user;*/
+	/*@ManyToOne 
+	@JoinColumn(name = "author_id")
+	private User user;*/
+	
+	@ManyToOne
+	@JoinColumn(name = "author_id", referencedColumnName = "user_id")
+	User user;
 
+	
 	@Column(name = "post_create_time")
    	@CreationTimestamp
 	private Date post_create_time;
 
-	public Post() {
-			
-	}
 
+	public Post() {
+		
+	}
 	public Post(String post_title, String post_content, String post_category, Date post_create_time) {
 		super();
 		this.post_title = post_title;
 		this.post_content = post_content;
 		this.post_category = post_category;
 		this.post_create_time= post_create_time;
+		
 	}
 
 	public Long getPost_id() {
@@ -93,14 +106,6 @@ public class Post {
 		this.post_category = post_category;
 	}
 
-	/*public Long getAuthor_id() {
-		return author_id;
-	}
-
-	public void setAuthor_id(Long author_id) {
-		this.author_id = author_id;
-	}*/
-
 	public Date getPost_create_time() {
 		return post_create_time;
 	}
@@ -108,6 +113,11 @@ public class Post {
 	public void setPost_create_time(Date post_create_time) {
 		this.post_create_time = post_create_time;
 	}
-
-    
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
 }
